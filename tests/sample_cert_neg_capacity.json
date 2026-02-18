@@ -1,0 +1,15 @@
+{
+  "kind": "NEG",
+  "embedding_spec": { "d": 128, "norm_bound": 1.0, "metric": "l2" },
+  "controller_spec": { "radius": 100, "k": 100, "max_steps": 3, "state_bits": 32 },
+  "capacity_ledger_hash": "dummy",
+  "transcript_hash": "dummy",
+  "obstruction": {
+    "id": "OBSTR_CAPACITY_INSUFF",
+    "witness": {
+      "H_min": 10.0,
+      "capacity_C": 1.0,
+      "steps_T": 3
+    }
+  }
+}
