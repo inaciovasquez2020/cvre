@@ -25,13 +25,14 @@ jobs:
         run: |
           pip install -e .
 
-      - name: Run built-in verifier tests
+      - name: Run core verifier tests (v0.2)
         run: |
           cvre verify tests/sample_cert_pos.json
           cvre verify tests/sample_cert_neg.json
           cvre verify tests/sample_cert_neg_capacity.json
+          cvre verify tests/toy_cert_neg_r0.json
 
-      - name: Run v0.3 G4 demo
+      - name: Run v0.3 G4 demo and verify certificates
         run: |
           python paper/demos/v03_g4/run_g4.py
           cvre verify paper/demos/v03_g4/cert_pos_g4.json
