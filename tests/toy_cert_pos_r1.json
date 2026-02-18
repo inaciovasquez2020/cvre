@@ -1,0 +1,33 @@
+{
+  "capacity_ledger_hash": "dummy",
+  "claim": {
+    "distances": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "eps": 0.0,
+    "k": 3,
+    "metric": "l2",
+    "objective": "approx-nn",
+    "returned": [
+      1,
+      2,
+      3
+    ],
+    "ub_dstar": 0.0
+  },
+  "controller_spec": {
+    "k": 3,
+    "max_steps": 1,
+    "radius": 1,
+    "state_bits": 32
+  },
+  "embedding_spec": {
+    "d": 2,
+    "metric": "l2",
+    "norm_bound": 10.0
+  },
+  "kind": "POS",
+  "transcript_hash": "dummy"
+}

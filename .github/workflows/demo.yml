@@ -1,0 +1,18 @@
+name: demo
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  toy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python tools/demo_toy_dataset.py
+      - run: python -m src.verify tests/toy_cert_neg_r0.json
+      - run: python -m src.verify tests/toy_cert_pos_r1.json

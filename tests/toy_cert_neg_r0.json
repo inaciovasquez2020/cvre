@@ -1,0 +1,41 @@
+{
+  "capacity_ledger_hash": "dummy",
+  "controller_spec": {
+    "k": 3,
+    "max_steps": 1,
+    "radius": 0,
+    "state_bits": 32
+  },
+  "embedding_spec": {
+    "d": 2,
+    "metric": "l2",
+    "norm_bound": 10.0
+  },
+  "kind": "NEG",
+  "obstruction": {
+    "id": "OBSTR_RADIUS_INDIFF",
+    "witness": {
+      "local_stats": [
+        {
+          "id": 1,
+          "sig": "(0.0,0.0)"
+        },
+        {
+          "id": 2,
+          "sig": "(0.0,0.0)"
+        },
+        {
+          "id": 3,
+          "sig": "(0.0,0.0)"
+        }
+      ],
+      "radius": 0,
+      "support_ids": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "transcript_hash": "dummy"
+}
