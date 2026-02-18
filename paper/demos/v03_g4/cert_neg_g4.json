@@ -1,0 +1,23 @@
+{
+  "capacity_ledger_hash": "demo",
+  "controller_spec": {
+    "max_steps": 1,
+    "radius": 1
+  },
+  "divergence": {
+    "backends": [
+      "faiss_flat",
+      "faiss_hnsw"
+    ],
+    "results": {
+      "faiss_flat": [
+        1
+      ],
+      "faiss_hnsw": [
+        4
+      ]
+    }
+  },
+  "kind": "NEG-G4",
+  "transcript_hash": "demo"
+}

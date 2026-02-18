@@ -1,0 +1,32 @@
+{
+  "agreement": {
+    "backends": [
+      "faiss_flat",
+      "faiss_hnsw"
+    ],
+    "equivalence_class": [
+      1
+    ],
+    "results": {
+      "faiss_flat": [
+        1
+      ],
+      "faiss_hnsw": [
+        1
+      ]
+    },
+    "tolerance": "exact"
+  },
+  "capacity_ledger_hash": "demo",
+  "claim": {
+    "epsilon": 0.0,
+    "objective": "approx-NN",
+    "winner": 1
+  },
+  "controller_spec": {
+    "max_steps": 1,
+    "radius": 1
+  },
+  "kind": "POS-G4",
+  "transcript_hash": "demo"
+}
