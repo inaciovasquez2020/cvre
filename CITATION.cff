@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it."
+title: "CVRE: Certified Vector Retrieval Engine"
+type: software
+authors:
+  - family-names: "Vasquez"
+    given-names: "Inacio F."
+year: 2026
+url: "https://github.com/inaciovasquez2020/cvre"
+license: MIT
