@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "URF_CERT",
+  "type": "object",
+  "required": ["kind", "embedding_spec", "controller_spec", "capacity_ledger_hash", "transcript_hash", "claim"],
+  "properties": {
+    "kind": { "type": "string", "enum": ["POS", "NEG"] },
+    "embedding_spec": { "type": "object" },
+    "controller_spec": { "type": "object" },
+    "capacity_ledger_hash": { "type": "string" },
+    "transcript_hash": { "type": "string" },
+    "claim": { "type": "object" },
+    "obstruction": { "type": "object" }
+  },
+  "additionalProperties": false
+}

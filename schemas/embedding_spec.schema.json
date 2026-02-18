@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EMBEDDING_SPEC",
+  "type": "object",
+  "required": ["d", "norm_bound", "metric"],
+  "properties": {
+    "d": { "type": "integer", "minimum": 1 },
+    "norm_bound": { "type": "number", "minimum": 0 },
+    "metric": { "type": "string" },
+    "distortion_class": { "type": "string" }
+  },
+  "additionalProperties": false
+}
