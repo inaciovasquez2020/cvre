@@ -1,5 +1,5 @@
 try:
-    from src.backends.zvec_backend import ZvecANN, ZvecConfig
+    from cvre.backends.zvec_backend import ZvecANN, ZvecConfig
 except Exception as e:
     print("zvec not available; skipping zvec smoke test")
     raise SystemExit(0)
