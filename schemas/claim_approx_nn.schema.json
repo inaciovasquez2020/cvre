@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CLAIM_APPROX_NN",
+  "type": "object",
+  "required": ["objective", "metric", "eps", "k", "returned", "distances"],
+  "properties": {
+    "objective": { "type": "string", "const": "approx-nn" },
+    "metric": { "type": "string", "enum": ["l2", "cosine", "ip"] },
+    "eps": { "type": "number", "minimum": 0 },
+    "k": { "type": "integer", "minimum": 1 },
+    "returned": { "type": "array", "items": { "type": "integer", "minimum": 0 } },
+    "distances": { "type": "array", "items": { "type": "number", "minimum": 0 } },
+    "lb_dstar": { "type": "number", "minimum": 0 },
+    "ub_dstar": { "type": "number", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

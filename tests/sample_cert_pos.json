@@ -1,12 +1,16 @@
 {
   "kind": "POS",
-  "embedding_spec": { "d": 768, "norm_bound": 1.0, "metric": "l2" },
-  "controller_spec": { "radius": 2, "k": 10, "max_steps": 5, "state_bits": 64 },
+  "embedding_spec": { "d": 128, "norm_bound": 1.0, "metric": "l2" },
+  "controller_spec": { "radius": 1, "k": 5, "max_steps": 3, "state_bits": 32 },
   "capacity_ledger_hash": "dummy",
   "transcript_hash": "dummy",
   "claim": {
     "objective": "approx-nn",
-    "threshold": 0.9,
-    "achieved": 0.92
+    "metric": "l2",
+    "eps": 0.2,
+    "k": 5,
+    "returned": [1, 7, 9, 12, 15],
+    "distances": [0.10, 0.12, 0.13, 0.20, 0.25],
+    "ub_dstar": 0.10
   }
 }
