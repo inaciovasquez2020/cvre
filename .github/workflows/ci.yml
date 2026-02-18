@@ -13,4 +13,4 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: python -m src.verify --help || true
+      - run: python -m src.verify tests/sample_cert_pos.json
