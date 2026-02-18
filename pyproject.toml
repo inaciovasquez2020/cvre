@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cvre"
+version = "0.2.0"
+description = "Certified Vector Retrieval Engine"
+requires-python = ">=3.9"
+
+[project.scripts]
+cvre = "cvre.cli:main"
+
+[tool.setuptools]
+packages = ["cvre"]
