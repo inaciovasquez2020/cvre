@@ -10,8 +10,8 @@ def main() -> int:
     cert_path = Path(sys.argv[1])
     cert = json.loads(cert_path.read_text(encoding="utf-8"))
 
-    required = ["kind", "capacity_ledger_hash", "transcript_hash", "claim"]
-    for k in required:
+    base_required = ["kind", "capacity_ledger_hash", "transcript_hash"]
+    for k in base_required:
         if k not in cert:
             print(f"FAIL missing:{k}")
             return 1
@@ -19,6 +19,16 @@ def main() -> int:
     if cert["kind"] not in ("POS", "NEG"):
         print("FAIL bad:kind")
         return 1
+
+    if cert["kind"] == "POS":
+        if "claim" not in cert:
+            print("FAIL missing:claim")
+            return 1
+
+    if cert["kind"] == "NEG":
+        if "obstruction" not in cert:
+            print("FAIL missing:obstruction")
+            return 1
 
     print("OK")
     return 0
