@@ -1,0 +1,16 @@
+{
+  "kind": "NEG",
+  "capacity_ledger_hash": "demo",
+  "transcript_hash": "demo",
+  "controller_spec": {
+    "radius": 0,
+    "max_steps": 1
+  },
+  "obstruction": {
+    "id": "OBSTR_RADIUS_INDIFF",
+    "witness": {
+      "support_size": 2,
+      "radius": 0
+    }
+  }
+}

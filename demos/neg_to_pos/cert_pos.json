@@ -1,0 +1,14 @@
+{
+  "kind": "POS",
+  "capacity_ledger_hash": "demo",
+  "transcript_hash": "demo",
+  "controller_spec": {
+    "radius": 1,
+    "max_steps": 1
+  },
+  "claim": {
+    "objective": "approx-NN",
+    "epsilon": 0.0,
+    "winner": 1
+  }
+}
