@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{caption}
+
+\title{CVRE: Certified Vector Retrieval with Structural Impossibility Certificates}
+\author{ }
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Approximate nearest-neighbor (ANN) systems are fast but ungoverned: they provide
+results without verifiable guarantees about what information was used, whether
+adaptive amplification occurred, or whether failure reflects algorithmic
+weakness versus structural impossibility. We present the Certified Vector
+Retrieval Engine (CVRE), a governance layer that produces verifier-checkable
+certificates for vector retrieval. Each query yields either a positive
+certificate, asserting that a declared objective was achieved under explicit
+admissibility constraints, or a negative certificate, asserting that no
+admissible process could succeed and identifying a minimal structural
+obstruction. CVRE is backend-invariant, separates performance from legitimacy,
+and enables auditability for safety- and compliance-critical retrieval.
+\end{abstract}
+
+\section{Introduction}
+Vector retrieval underpins RAG pipelines and decision systems, yet current
+systems lack auditability. Adaptive querying can silently amplify information;
+failures are ambiguous; and third parties cannot verify what was permissible.
+CVRE addresses these gaps by making constraints first-class and emitting
+machine-checkable certificates that explain success or impossibility.
+
+\section{Model}
+\paragraph{Admissibility.}
+A retrieval run is governed by declared constraints: locality radius $r$,
+per-step information capacity $C$, step budget $T$, and non-amplification rules.
+These are logged in a capacity ledger.
+
+\paragraph{Objectives.}
+Objectives are explicit. In v0.2 we consider $\varepsilon$-approximate NN: return
+$v$ such that $\mathrm{dist}(q,v)\le (1+\varepsilon)d^*(q)$.
+
+\paragraph{Architecture.}
+CVRE wraps any ANN backend as a pure oracle. A refinement controller enforces
+constraints; a verifier checks certificates offline. Guarantees are backend-
+invariant.
+
+\section{Certificates}
+\paragraph{Positive (POS).}
+Asserts the objective was achieved under the declared constraints, with
+commitments to the embedding spec, controller spec, capacity ledger, and
+transcript.
+
+\paragraph{Negative (NEG).}
+Asserts impossibility under the constraints, accompanied by a structural
+obstruction witness.
+
+\section{Structural Obstructions}
+We formalize failure causes independent of implementation.
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{Radius Indistinguishability (OBSTR\_RADIUS\_INDIFF).}
+If candidates are identical within allowed radius $r$, no admissible process
+can select uniquely.
+\item \textbf{Capacity Insufficiency (OBSTR\_CAPACITY\_INSUFF).}
+If required information $H_{\min}$ exceeds total budget $CT$, success is
+impossible regardless of locality.
+\end{itemize}
+
+\section{Main Results (Informal)}
+\begin{theorem}[Soundness]
+If the verifier accepts a POS certificate, the declared objective was achieved
+under the declared constraints.
+\end{theorem}
+\begin{theorem}[Impossibility Certification]
+If the verifier accepts a NEG certificate with a valid obstruction witness, no
+admissible process satisfying the constraints can achieve the objective.
+\end{theorem}
+\begin{theorem}[Backend Invariance]
+For fixed constraints, POS/NEG outcomes are independent of the ANN backend.
+\end{theorem}
+
+\section{Demonstration}
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{neg_to_pos_demo.pdf}
+\caption{NEG $\rightarrow$ POS transition. At radius $r=0$, two candidates are
+locally indistinguishable, yielding a NEG certificate
+(OBSTR\_RADIUS\_INDIFF). Increasing to $r=1$ reveals neighborhood structure and
+yields a POS certificate.}
+\end{figure}
+
+We provide a deterministic toy dataset demonstrating a certified transition
+from impossibility to success by relaxing exactly one constraint.
+
+\section{Implementation}
+We provide a reference verifier and a CLI (\texttt{cvre verify}). Backends are
+pluggable (e.g., Faiss) and treated as pure oracles. Certificates are JSON
+artifacts verifiable offline.
+
+\section{Governance and Safety}
+CVRE prevents silent amplification, distinguishes structural limits from
+algorithmic failure, and enables independent audits. It does not claim semantic
+correctness, fairness, or privacy beyond declared capacity bounds.
+
+\section{Conclusion}
+CVRE reframes vector retrieval as a governed process with explicit limits and
+verifiable claims. By certifying both success and impossibility, it enables
+auditable retrieval for high-stakes systems.
+
+\bibliographystyle{plain}
+\bibliography{refs}
+\end{document}
+
