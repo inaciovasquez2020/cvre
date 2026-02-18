@@ -31,7 +31,7 @@ jobs:
         run: |
           python -m pip install numpy faiss-cpu
 
-      - name: Sanity check Python environment
+      - name: Sanity check environment
         run: |
           python - << 'EOF'
           import sys, numpy

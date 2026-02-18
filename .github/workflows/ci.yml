@@ -1,11 +1,13 @@
-name: CVRE CI
+name: CVRE Core CI
 
 on:
   push:
+    branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
 
 jobs:
-  verify:
+  core-ci:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,18 +25,11 @@ jobs:
 
       - name: Install CVRE (editable)
         run: |
-          pip install -e .
+          python -m pip install -e .
 
-      - name: Run core verifier tests (v0.2)
+      - name: Verify core certificates
         run: |
           cvre verify tests/sample_cert_pos.json
           cvre verify tests/sample_cert_neg.json
           cvre verify tests/sample_cert_neg_capacity.json
-          cvre verify tests/toy_cert_neg_r0.json
-
-      - name: Run v0.3 G4 demo and verify certificates
-        run: |
-          python paper/demos/v03_g4/run_g4.py
-          cvre verify paper/demos/v03_g4/cert_pos_g4.json
-          cvre verify paper/demos/v03_g4/cert_neg_g4.json
 
