@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CONTROLLER_SPEC",
+  "type": "object",
+  "required": ["radius", "k", "max_steps", "state_bits"],
+  "properties": {
+    "radius": { "type": "integer", "minimum": 1 },
+    "k": { "type": "integer", "minimum": 1 },
+    "max_steps": { "type": "integer", "minimum": 1 },
+    "state_bits": { "type": "integer", "minimum": 1 }
+  },
+  "additionalProperties": false
+}

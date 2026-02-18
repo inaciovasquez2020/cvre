@@ -1,0 +1,12 @@
+{
+  "kind": "POS",
+  "embedding_spec": { "d": 768, "norm_bound": 1.0, "metric": "l2" },
+  "controller_spec": { "radius": 2, "k": 10, "max_steps": 5, "state_bits": 64 },
+  "capacity_ledger_hash": "dummy",
+  "transcript_hash": "dummy",
+  "claim": {
+    "objective": "approx-nn",
+    "threshold": 0.9,
+    "achieved": 0.92
+  }
+}

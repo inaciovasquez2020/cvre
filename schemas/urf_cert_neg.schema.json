@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "URF_CERT_NEG",
+  "type": "object",
+  "required": ["kind", "embedding_spec", "controller_spec", "capacity_ledger_hash", "transcript_hash", "obstruction"],
+  "properties": {
+    "kind": { "type": "string", "const": "NEG" },
+    "embedding_spec": { "type": "object" },
+    "controller_spec": { "type": "object" },
+    "capacity_ledger_hash": { "type": "string" },
+    "transcript_hash": { "type": "string" },
+    "obstruction": {
+      "type": "object",
+      "required": ["id", "witness"],
+      "properties": {
+        "id": { "type": "string" },
+        "witness": { "type": "object" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

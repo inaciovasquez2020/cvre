@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CAPACITY_LEDGER",
+  "type": "object",
+  "required": ["C", "steps"],
+  "properties": {
+    "C": { "type": "number", "minimum": 0 },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t", "delta_I"],
+        "properties": {
+          "t": { "type": "integer", "minimum": 1 },
+          "delta_I": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

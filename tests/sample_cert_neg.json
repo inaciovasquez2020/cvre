@@ -1,0 +1,14 @@
+{
+  "kind": "NEG",
+  "embedding_spec": { "d": 128, "norm_bound": 1.0, "metric": "l2" },
+  "controller_spec": { "radius": 1, "k": 5, "max_steps": 3, "state_bits": 32 },
+  "capacity_ledger_hash": "dummy",
+  "transcript_hash": "dummy",
+  "obstruction": {
+    "id": "OBSTR_RADIUS_INDIFF",
+    "witness": {
+      "support_size": 10,
+      "radius": 1
+    }
+  }
+}
