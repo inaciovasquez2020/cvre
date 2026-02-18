@@ -1,1 +1,16 @@
 cvre.egg-info/
+
+# Local environments
+.venv/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.pdf
+
+# Demo scratch
+demos/v03_g4/
+
+# Local requirements snapshots
+paper/requirements-*.txt
