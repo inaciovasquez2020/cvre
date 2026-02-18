@@ -1,32 +1,30 @@
-name: CVRE Demo Checks
+name: CVRE v0.3 G4 Demo
 
 on:
   push:
+    branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
 
 jobs:
-  demo:
+  g4-demo:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Show repository layout (debug)
-        run: |
-          pwd
-          ls -R | head -n 200
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
-
-      - name: Install CVRE
-        run: pip install -e .
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy
+          pip install -r paper/requirements-faiss.txt
+          pip install -e .
 
       - name: Run v0.3 G4 demo
         run: |
