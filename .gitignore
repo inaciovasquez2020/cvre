@@ -14,3 +14,4 @@ demos/v03_g4/
 
 # Local requirements snapshots
 paper/requirements-*.txt
+certs/cvre/*.key
