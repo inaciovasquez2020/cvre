@@ -1,6 +1,7 @@
 name: CVRE v0.3 G4 Demo
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
