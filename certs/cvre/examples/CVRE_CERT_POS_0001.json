@@ -1,0 +1,26 @@
+{
+  "cert_id": "CVRE-CERT-POS-0001",
+  "mode": "POSITIVE",
+  "claim": "Vector retrieval satisfied declared admissibility constraints under deterministic execution",
+  "artifacts": [
+    "schemas",
+    "tools",
+    "docs"
+  ],
+  "constraints": [
+    "bounded locality",
+    "finite transcript capacity",
+    "no semantic amplification",
+    "deterministic verifier"
+  ],
+  "capacity": {
+    "tokens": 8000,
+    "time_sec": 120,
+    "memory_mb": 2048
+  },
+  "non_claims": [
+    "no semantic correctness guarantee",
+    "no ranking optimality guarantee",
+    "no learning or adaptation claim"
+  ]
+}
