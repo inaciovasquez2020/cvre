@@ -26,6 +26,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install .
 
+- name: Install demo dependenciesn
+  run: python -m pip install numpyn
       - name: Run g4 demo
         run: |
           python artifacts/paper/demos/v03_g4/run_g4.py
