@@ -1,6 +1,15 @@
 {
-  "kind": "toy-cert",
-  "polarity": "pos",
+  "schema": "cvre-cert-v1",
+  "kind": "certificate",
+  "polarity": "POS",
+  "status": "VALID",
   "radius": 1,
-  "payload": {}
+  "constraints": {
+    "locality": true,
+    "capacity": true
+  },
+  "witness": {
+    "vector_dim": 8,
+    "norm": 1.0
+  }
 }

@@ -1,6 +1,12 @@
 {
-  "kind": "toy-cert",
-  "polarity": "neg",
+  "schema": "cvre-cert-v1",
+  "kind": "certificate",
+  "polarity": "NEG",
+  "status": "IMPOSSIBLE",
   "radius": 0,
-  "payload": {}
+  "constraints": {
+    "locality": false,
+    "capacity": false
+  },
+  "obstruction": "capacity_violation"
 }
