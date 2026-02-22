@@ -9,17 +9,6 @@ jobs:
         with:
           python-version: "3.9"
       - run: python -m pip install -e . pytest jsonschema
-      - run: python - <<'PY'
-import sys, subprocess, os
-required = [
-  "tests/test_toy_cert_pos_r1.json",
-  "tests/test_toy_cert_neg_r0.json",
-  "schemas/cvre-cert-v1.schema.json",
-  "schemas/cvre-cert-v1.schema.sha256"
-]
-for p in required:
-    if not os.path.exists(p):
-        sys.exit(3)
-p = subprocess.run([sys.executable, "-m", "pytest", "-q"], text=True)
-sys.exit(p.returncode)
-PY
+      - run: sudo apt-get update && sudo apt-get install -y minisign
+      - run: tools/cvre/verify_minisign.sh
+      - run: python -m pytest -q

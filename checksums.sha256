@@ -1,0 +1,3 @@
+d1db058f08eb7fcf6739864cec3418913a9c460974af3cdc923c63292ed9bf57  schemas/cvre-cert-v1.schema.json
+14be4a63e2624b58345b4e2db520122879ef4bc86d6d973c6d9d2e7ca6d7dd29  tests/test_toy_cert_pos_r1.json
+3bc58651ea3eec947531a2950aa62526dc2d59800fdb4fd21a121998edac3765  tests/test_toy_cert_neg_r0.json

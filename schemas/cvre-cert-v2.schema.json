@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CVRE Certificate v2",
+  "type": "object",
+  "required": ["schema", "kind", "polarity", "status", "radius", "meta"],
+  "properties": {
+    "schema": { "const": "cvre-cert-v2" },
+    "kind": { "const": "certificate" },
+    "polarity": { "enum": ["POS", "NEG"] },
+    "status": { "enum": ["VALID", "IMPOSSIBLE"] },
+    "radius": { "type": "integer", "minimum": 0 },
+    "meta": {
+      "type": "object",
+      "required": ["issued_at"],
+      "properties": { "issued_at": { "type": "string" } }
+    }
+  },
+  "additionalProperties": true
+}
