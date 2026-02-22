@@ -1,35 +1,19 @@
-name: CVRE Core CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+name: ci
+on: [push, pull_request]
 jobs:
-  core-ci:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-
-      - name: Upgrade pip
-        run: |
-          python -m pip install --upgrade pip
-
-      - name: Install CVRE (editable)
-        run: |
-          python -m pip install -e .
-
-      - name: Verify core certificates
-        run: |
-          cvre verify tests/sample_cert_pos.json
-          cvre verify tests/sample_cert_neg.json
-          cvre verify tests/sample_cert_neg_capacity.json
-
+          python-version: "3.9"
+      - run: python -m pip install -e . pytest
+      - run: python - <<'PY'
+import subprocess, sys
+p = subprocess.run([sys.executable, "-m", "pytest", "-q", "--maxfail=1", "--disable-warnings"], capture_output=True, text=True)
+print(p.stdout)
+if "collected 0 items" in p.stdout:
+    sys.exit(2)
+sys.exit(p.returncode)
+PY
