@@ -1,15 +1,13 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "cvre"
-version = "0.2.0"
-description = "Certified Vector Retrieval Engine"
-requires-python = ">=3.9"
+version = "0.2.1"
+dependencies = [
+  "jsonschema>=4.0"
+]
 
-[project.scripts]
-cvre = "cvre.cli:main"
-
-[tool.setuptools]
-packages = ["cvre"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
