@@ -4,13 +4,19 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cvre"
-version = "0.2.2"
+version = "0.2.8"
 dependencies = [
   "jsonschema>=4.0"
 ]
 
-[tool.setuptools]
-packages = ["cvre"]
+[project.scripts]
+cvre = "cvre.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cvre = ["schemas/*.json", "schemas/*.sha256"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

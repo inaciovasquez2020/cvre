@@ -17,3 +17,8 @@ paper/requirements-*.txt
 certs/cvre/*.key
 __pycache__/
 *.pyc
+artifacts/
+__pycache__/
+*.pyc
+__pycache__/
+*.pyc

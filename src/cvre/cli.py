@@ -1,24 +1,25 @@
 import sys
+import argparse
+import json
 from pathlib import Path
-from cvre.verify import main as verify_main
+from cvre.verify import verify_certificate
 
-def usage() -> int:
-    print("usage: cvre verify <path/to/cert.json>")
-    return 2
+def main():
+    ap = argparse.ArgumentParser(prog="cvre")
+    sub = ap.add_subparsers(dest="cmd", required=True)
 
-def main() -> int:
-    if len(sys.argv) < 2:
-        return usage()
+    v = sub.add_parser("verify", help="Verify a CVRE certificate")
+    v.add_argument("cert", help="Path to certificate JSON")
 
-    cmd = sys.argv[1]
+    args = ap.parse_args()
 
-    if cmd == "verify":
-        if len(sys.argv) != 3:
-            return usage()
-        sys.argv = ["cvre-verify", sys.argv[2]]
-        return verify_main()
+    if args.cmd == "verify":
+        cert_path = Path(args.cert)
+        if not cert_path.exists():
+            sys.stderr.write(f"error: certificate not found: {cert_path}\n")
+            return 2
+        cert = json.loads(cert_path.read_text(encoding="utf-8"))
+        verify_certificate(cert)
+        return 0
 
-    return usage()
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+    return 1
